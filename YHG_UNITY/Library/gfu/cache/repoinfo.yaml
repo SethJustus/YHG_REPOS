@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cacheType: 1
-  lastUpdatedAtString: 2022-05-18T10:13:43.739-04:00
-  initializedAtString: 2022-05-18T10:13:43.739-04:00
+  lastUpdatedAtString: 2022-05-19T07:30:13.125-04:00
+  initializedAtString: 2022-05-19T07:30:13.125-04:00
   currentGitRemote:
     name: origin
     url: https://github.com/SethJustus/YHG_REPOS.git
@@ -24,14 +24,14 @@ MonoBehaviour:
     function: 0
     token: 
   currentGitBranch:
-    name: master
-    tracking: 
+    name: main
+    tracking: origin/main
   currentConfigBranch:
-    name: master
+    name: main
     remote:
-      name: 
-      url: 
-    trackingBranch: 
+      name: origin
+      url: https://github.com/SethJustus/YHG_REPOS.git
+    trackingBranch: main
   currentConfigRemote:
     name: origin
     url: https://github.com/SethJustus/YHG_REPOS.git
