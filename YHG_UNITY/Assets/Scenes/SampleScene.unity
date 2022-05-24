@@ -157,6 +157,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Speed: 50
   Drag: 5
+  JumpHeight: 2
 --- !u!212 &119273364
 SpriteRenderer:
   m_ObjectHideFlags: 0
