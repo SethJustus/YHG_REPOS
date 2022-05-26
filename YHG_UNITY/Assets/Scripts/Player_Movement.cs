@@ -4,30 +4,37 @@ using UnityEngine;
 
 public class Player_Movement : MonoBehaviour
 {
+    #region Public Vars
     public float Speed;
     public float Drag;
     public float JumpHeight;
+    #endregion
+    #region Private Vars
     private Rigidbody2D rb;
+    private Character_State Character;
+    private float speed;
+    private float jumpHeight;
+    #endregion
     // Start is called before the first frame update
     void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
+        Character = GetComponent<Character_State>();
+        rb = Character.rb;
+        speed = Speed*rb.mass;
+        jumpHeight = JumpHeight*rb.mass;
     }
     void Jump()
     {
-        bool jumped = false;
-        if(jumped == false)
+        if(Character.grounded == true)
         {
-            rb.AddForce(transform.up * JumpHeight, ForceMode2D.Impulse);
-            jumped = true;
+            rb.AddForce(transform.up * jumpHeight, ForceMode2D.Impulse);
         }
-        
     }
     // Update is called once per frame
     void FixedUpdate()
     {
         #region Player Input
-        float walk = Input.GetAxis("Horizontal")*Speed;
+        float walk = Input.GetAxis("Horizontal")*speed;
         float jump = Input.GetAxis("Jump");
         if(Input.GetAxis("Jump") == 1)
         {
