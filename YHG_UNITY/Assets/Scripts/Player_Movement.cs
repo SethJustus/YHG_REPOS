@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+[RequireComponent(typeof(Character_State))]
 public class Player_Movement : MonoBehaviour
 {
     #region Public Vars
@@ -18,11 +18,15 @@ public class Player_Movement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        
+        
         Character = GetComponent<Character_State>();
+        Debug.Log("Player_Movement Starting");
         rb = Character.rb;
         speed = Speed*rb.mass;
         jumpHeight = JumpHeight*rb.mass;
     }
+
     void Jump()
     {
         if(Character.grounded == true)
@@ -33,6 +37,7 @@ public class Player_Movement : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        
         #region Player Input
         float walk = Input.GetAxis("Horizontal")*speed;
         float jump = Input.GetAxis("Jump");
