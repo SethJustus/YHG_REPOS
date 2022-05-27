@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
+[RequireComponent(typeof(BoxCollider2D))]
 public class Character_State : MonoBehaviour
 {
     public bool grounded;
@@ -28,7 +29,7 @@ public class Character_State : MonoBehaviour
             Debug.Log("Character no longer grounded");
         }
     }
-
+   
     // Update is called once per frame
     void FixedUpdate()
     {
