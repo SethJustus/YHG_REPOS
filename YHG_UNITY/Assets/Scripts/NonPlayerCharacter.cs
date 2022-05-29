@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class NonPlayerCharacter : MonoBehaviour
 {
+    [SerializeField] 
+    private GameObject player;
     // Start is called before the first frame update
     void Start()
     {
-        
+        player = GameObject.Find("Player");
     }
     void TalkedTo(Character_State talker)
     {   

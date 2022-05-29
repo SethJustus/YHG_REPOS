@@ -137,6 +137,7 @@ GameObject:
   - component: {fileID: 119273367}
   - component: {fileID: 119273366}
   - component: {fileID: 119273368}
+  - component: {fileID: 119273369}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -218,7 +219,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 119273362}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.37, y: 2.9038, z: 0}
+  m_LocalPosition: {x: 0, y: 3.54, z: 0}
   m_LocalScale: {x: 1, y: 2.3794882, z: 1}
   m_Children:
   - {fileID: 519420032}
@@ -286,6 +287,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   grounded: 0
   rb: {fileID: 119273366}
+--- !u!114 &119273369
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 119273362}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 951a97ec1527475498676f4d1d07e801, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &304306263
 GameObject:
   m_ObjectHideFlags: 0
@@ -381,6 +394,7 @@ GameObject:
   - component: {fileID: 339389024}
   - component: {fileID: 339389023}
   - component: {fileID: 339389027}
+  - component: {fileID: 339389028}
   m_Layer: 0
   m_Name: NPC
   m_TagString: Untagged
@@ -482,7 +496,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 339389022}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 10.85, y: 3.77, z: 0}
+  m_LocalPosition: {x: -1.72, y: 1.77, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -514,6 +528,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &339389028
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 339389022}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c96d6721d588ea489ad484e867365e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
 --- !u!1 &369260165
 GameObject:
   m_ObjectHideFlags: 0
@@ -731,7 +758,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 6.193289
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -755,7 +782,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.13999987, y: 1.4609023, z: -10}
+  m_LocalPosition: {x: 0, y: 1.4609023, z: -10}
   m_LocalScale: {x: 1, y: 0.4202584, z: 1}
   m_Children: []
   m_Father: {fileID: 119273365}
