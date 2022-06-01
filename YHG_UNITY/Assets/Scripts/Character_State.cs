@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
-[RequireComponent(typeof(BoxCollider2D))]
 public class Character_State : MonoBehaviour
 {
     public bool grounded;
@@ -30,9 +29,23 @@ public class Character_State : MonoBehaviour
         }
     }
    
-    // Update is called once per frame
+    // Update is called once per frames
     void FixedUpdate()
     {
-        
+        Debug.Log(grounded);
     }
+    // void OnTriggerEnter2D(Collider2D collision)
+    // {
+    //     if(collision.gameObject.tag == "Ground")
+    //     {
+    //         grounded = true;
+    //     }
+    // }
+    // void OnTriggerExit2D(Collider2D collision)
+    // {
+    //     if(collision.gameObject.tag == "Ground")
+    //     {
+    //         grounded = false;
+    //     }
+    // }
 }

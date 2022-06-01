@@ -31,7 +31,7 @@ public class Player_Movement : MonoBehaviour
     {
         if(Character.grounded == true)
         {
-            rb.AddForce(transform.up * jumpHeight, ForceMode2D.Impulse);
+            rb.AddForce(transform.up * jumpHeight);
         }
     }
     // Update is called once per frame
