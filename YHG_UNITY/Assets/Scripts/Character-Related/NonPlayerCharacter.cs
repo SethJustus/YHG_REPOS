@@ -36,6 +36,10 @@ public class NonPlayerCharacter : MonoBehaviour
                 manager.NPC = this;
             }            
         }
+        if(playerDistance>2)
+        {
+            this.talking = false;
+        }
         if(talking == true)
         {
             if(playerDistance>2)

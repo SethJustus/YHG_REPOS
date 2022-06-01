@@ -51,4 +51,11 @@ public class Dialogue_Manager : MonoBehaviour
         Debug.Log("End of conversation");
         displaying = false;
     }
+    void Update()
+    {
+        if(this.NPC.talking == false)
+        {
+            EndDialogue();
+        }
+    }
 }
