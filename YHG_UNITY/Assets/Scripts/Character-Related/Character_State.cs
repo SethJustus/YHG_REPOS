@@ -7,6 +7,7 @@ using UnityEngine;
 public class Character_State : MonoBehaviour
 {
     public bool grounded;
+    public bool talking;
     public Rigidbody2D rb;
 
     void Start()
@@ -28,11 +29,5 @@ public class Character_State : MonoBehaviour
             grounded = false;
             Debug.Log("Character no longer grounded");
         }
-    }
-   
-    // Update is called once per frame
-    void FixedUpdate()
-    {
-        
     }
 }

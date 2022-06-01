@@ -6,16 +6,21 @@ public class Dialogue_Manager : MonoBehaviour
 {
     public NonPlayerCharacter NPC;
     private Queue<string> sentences;
+    private GameObject Player;
+    private Character_State playerState;
     public GameObject display;
     public Text dialogueText;
+    public bool displaying;
     void Start()
     {
         sentences = new Queue<string>();
-        
+        Player = GameObject.Find("Player");
+        playerState = Player.GetComponent<Character_State>();
     }
     public void StartDialogue(Dialogue dialogue)
     {
         NPC.talking = true;
+        playerState.talking = true;
         display.SetActive(true);
         Debug.Log("You talked to "+dialogue.name);
         sentences.Clear();
@@ -23,7 +28,9 @@ public class Dialogue_Manager : MonoBehaviour
         {
             sentences.Enqueue(sentence);
         }
-        DisplayNextSentence();        
+        
+        DisplayNextSentence();   
+        displaying = true;     
     }
     public void DisplayNextSentence()
     {
@@ -38,9 +45,10 @@ public class Dialogue_Manager : MonoBehaviour
     }
     public void EndDialogue()
     {
+        playerState.talking = false;
         NPC.talking = false;
         display.SetActive(false);
         Debug.Log("End of conversation");
-
+        displaying = false;
     }
 }

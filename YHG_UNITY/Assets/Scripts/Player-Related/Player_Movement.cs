@@ -2,19 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 [RequireComponent(typeof(Character_State))]
+[System.Serializable]
 public class Player_Movement : MonoBehaviour
 {
-    #region Public Vars
     public float Speed;
     public float Drag;
     public float JumpHeight;
-    #endregion
-    #region Private Vars
+
     private Rigidbody2D rb;
     private Character_State Character;
     private float speed;
     private float jumpHeight;
-    #endregion
+
     // Start is called before the first frame update
     void Start()
     {
@@ -29,7 +28,7 @@ public class Player_Movement : MonoBehaviour
 
     void Jump()
     {
-        if(Character.grounded == true)
+        if(Character.grounded == true&&Character.talking == false)
         {
             rb.AddForce(transform.up * jumpHeight, ForceMode2D.Impulse);
         }
@@ -38,16 +37,14 @@ public class Player_Movement : MonoBehaviour
     void FixedUpdate()
     {
         
-        #region Player Input
+
         float walk = Input.GetAxis("Horizontal")*speed;
         float jump = Input.GetAxis("Jump");
         if(Input.GetAxis("Jump") == 1)
         {
             Jump();
         }
-        #endregion
 
-        #region Move the player
 
         //Makes a new Vector3 by which to move the player by.
         Vector3 horizontalMovement = new Vector3(walk,0,0);
@@ -55,7 +52,6 @@ public class Player_Movement : MonoBehaviour
         rb.AddForce(horizontalMovement, ForceMode2D.Force);
         //Adds drag to the player
         rb.drag = Drag;
-        #endregion
     }
 }
 
