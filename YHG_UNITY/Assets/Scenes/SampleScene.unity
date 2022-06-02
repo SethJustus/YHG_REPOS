@@ -159,7 +159,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Speed: 70
   Drag: 5
-  JumpHeight: 10
+  JumpHeight: 1200
 --- !u!212 &119273364
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -285,9 +285,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aeab1bcaa87d9624f8968432eb187790, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  grounded: 0
+  layerGround:
+    serializedVersion: 2
+    m_Bits: 8
   talking: 0
   rb: {fileID: 119273366}
+  dialogue_manager: {fileID: 0}
+  manager: {fileID: 0}
 --- !u!114 &119273369
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -821,7 +825,7 @@ GameObject:
   - component: {fileID: 712059925}
   - component: {fileID: 712059928}
   - component: {fileID: 712059927}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Ground
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -1183,7 +1187,7 @@ GameObject:
   - component: {fileID: 1800854832}
   - component: {fileID: 1800854831}
   - component: {fileID: 1800854830}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Ground (1)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -1314,7 +1318,7 @@ GameObject:
   - component: {fileID: 2047565738}
   m_Layer: 0
   m_Name: Dialogue-Manager
-  m_TagString: Untagged
+  m_TagString: Dialogue_Manager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

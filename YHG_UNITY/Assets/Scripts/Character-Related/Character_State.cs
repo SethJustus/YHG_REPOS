@@ -6,54 +6,24 @@ using UnityEngine;
 public class Character_State : MonoBehaviour
 {
     [SerializeField] private LayerMask layerGround;
-    public bool grounded;
     public bool talking;
     public Rigidbody2D rb;
-
+    public GameObject dialogue_manager;
+    public Dialogue_Manager manager;
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        dialogue_manager = GameObject.FindGameObjectWithTag("Dialogue_Manager");
+        manager = dialogue_manager.GetComponent<Dialogue_Manager>();
     }
-    // void OnCollisionEnter2D(Collision2D collision)
-    // {
-    //     if(collision.gameObject.tag == "Ground")
-    //     {
-    //         grounded = true;
-    //         Debug.Log("Character now grounded");
-    //     }
-    // }
-    // void OnCollisionExit2D(Collision2D collision)
-    // {
-    //     if(collision.gameObject.tag == "Ground")
-    //     {
-    //         grounded = false;
-    //         Debug.Log("Character no longer grounded");
-    //     }
-    // }
    
-    // Update is called once per frames
-    void FixedUpdate()
-    {
-        Debug.Log(grounded);
-        
-    }
+
     public bool IsGrounded()
     {
-        Debug.Log("Is the player grounded?");
-        return Physics2D.BoxCast(transform.position, transform.localScale,0f,Vector2.down, 0.5f,layerGround);
+        if(manager.displaying == true)
+        {
+            return false;
+        }
+        return Physics2D.BoxCast(transform.position, transform.localScale,0f,Vector2.down, 0.1f,layerGround);
     }
-    // void OnTriggerEnter2D(Collider2D collision)
-    // {
-    //     if(collision.gameObject.tag == "Ground")
-    //     { 
-    //         grounded = true;
-    //     }
-    // }
-    // void OnTriggerExit2D(Collider2D collision)
-    // {
-    //     if(collision.gameObject.tag == "Ground")
-    //     {
-    //         grounded = false;
-    //     }
-    // }
 }

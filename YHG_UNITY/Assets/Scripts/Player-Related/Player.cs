@@ -22,7 +22,6 @@ public class Player : MonoBehaviour
             {
                 manager.DisplayNextSentence();
             }
-            
         }
     }
 }
