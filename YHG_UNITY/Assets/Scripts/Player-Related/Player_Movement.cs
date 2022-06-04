@@ -28,10 +28,7 @@ public class Player_Movement : MonoBehaviour
 
     void Jump()
     {
-        if(Character.IsGrounded())
-        {
-            rb.AddForce(transform.up * jumpHeight);
-        }
+        rb.AddForce(transform.up * jumpHeight);
     }
     // Update is called once per frame
     void FixedUpdate()
@@ -40,10 +37,15 @@ public class Player_Movement : MonoBehaviour
 
         float walk = Input.GetAxis("Horizontal")*speed;
         float jump = Input.GetAxis("Jump");
-        if(Input.GetAxis("Jump") == 1)
+        
+        if(Character.IsGrounded())
         {
-            Jump();
+            if(Input.GetAxis("Jump") == 1)
+            {
+                Jump();
+            }
         }
+        
 
 
         //Makes a new Vector3 by which to move the player by.
