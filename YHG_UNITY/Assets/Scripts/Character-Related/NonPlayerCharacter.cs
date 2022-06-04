@@ -1,52 +1,46 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 public class NonPlayerCharacter : MonoBehaviour
 {
     public Dialogue dialogue;
     public Dialogue_Manager manager;
+    public float distTalk = 2;
+    public bool talking;
+    public bool near;
     private GameObject playerGO;
     private Player player;
-    public bool talking;
     
-    public void TriggerDialogue()
-    {
-        manager.StartDialogue(dialogue);
-    }
-    public void EndDialogue()
-    {
-        manager.EndDialogue();
-    }
     void Start()
     {
         playerGO = GameObject.Find("Player");
         player = playerGO.GetComponent<Player>();
         manager = FindObjectOfType<Dialogue_Manager>();
-
     }
     void Update()
     {
         float playerDistance = Vector2.Distance(player.transform.position, transform.position);
-        if(playerDistance<2&&player.tryingToTalk == true)
+        if(playerDistance<distTalk)
         {
+            near = true;
+            manager.NPC = this;
             if(talking == false)
             {
-                TriggerDialogue();
-                manager.NPC = this;
-            }            
-        }
-        if(playerDistance>2)
-        {
-            this.talking = false;
-        }
-        if(talking == true)
-        {
-            if(playerDistance>2)
-            {
-                talking = false;
-                //EndDialogue();
+                
+                if(player.tryingToTalk == true)
+                {
+                        TriggerDialogue();
+                        
+                }
             }
+        } else
+        {
+            near = false;
+            this.talking = false;
+            
         }
+    }
+    public void TriggerDialogue()
+    {
+        manager.StartDialogue(dialogue);
     }
 }

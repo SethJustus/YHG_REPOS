@@ -24,6 +24,6 @@ public class Character_State : MonoBehaviour
         {
             return false;
         }
-        return Physics2D.BoxCast(transform.position, transform.localScale,0f,Vector2.down, 0.1f,layerGround);
+        return Physics2D.BoxCast(transform.position, transform.localScale,0f,Vector2.down, 0.01f,layerGround);
     }
 }

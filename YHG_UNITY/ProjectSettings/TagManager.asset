@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Ground
   - Dialogue_Manager
+  - PlayerCamera
+  - Talk_Cue
   layers:
   - Default
   - TransparentFX
