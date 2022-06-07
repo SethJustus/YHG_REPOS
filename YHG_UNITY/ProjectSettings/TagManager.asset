@@ -8,6 +8,7 @@ TagManager:
   - Dialogue_Manager
   - PlayerCamera
   - Talk_Cue
+  - Game_Manager
   layers:
   - Default
   - TransparentFX
