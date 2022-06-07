@@ -27,10 +27,10 @@ public class Dialogue_Manager : MonoBehaviour
     }
     public void StartDialogue(Dialogue dialogue)
     {
+        
         NPC.talking = true;
         playerState.talking = true;
         display.SetActive(true);
-        //Debug.Log("You talked to "+dialogue.name);
         sentences.Clear();
         foreach(string sentence in dialogue.sentences)
         {
@@ -56,7 +56,6 @@ public class Dialogue_Manager : MonoBehaviour
         playerState.talking = false;
         NPC.talking = false;
         display.SetActive(false);
-        //Debug.Log("End of conversation");
         displaying = false;
     }
     void Update()
