@@ -22,13 +22,12 @@ public class Controller_Player : MonoBehaviour
     void Start()
     {
         this.character = GetComponent<Character>();
-
-        character.rb.drag = Drag;
         JumpPower = JumpPower*character.rb.mass*character.rb.gravityScale;
         FloatPower = FloatPower*character.rb.mass*character.rb.gravityScale;
     }
     void FixedUpdate()
     {
+        character.rb.drag = Drag;
         if(character.isGrounded())
         {
             Drag = GroundDrag;
@@ -82,10 +81,10 @@ public class Controller_Player : MonoBehaviour
         float walk = Input.GetAxisRaw("Horizontal");
         if(walk>0)
         {
-            character.WalkRight(WalkSpeed);
+            character.WalkRight(RealWalkSpeed);
         }else if(walk<0)
         {
-            character.WalkLeft(WalkSpeed);
+            character.WalkLeft(RealWalkSpeed);
         }
     }
 }
