@@ -5,6 +5,7 @@ using UnityEngine;
 [RequireComponent(typeof(Character))]
 public class Controller_Player : MonoBehaviour
 {
+    //Movement Params
     public float JumpPower;
     public float FloatPower;
     public float AirDrag;
@@ -13,12 +14,17 @@ public class Controller_Player : MonoBehaviour
     public float WalkSpeed;
     public float AirWalk;
     public bool jumpContinuously;
+    //Dialogue Params
+    public bool Listening;
+    //Holder Variables
+    private float Drag;
+    private float RealWalkSpeed;
+    //Used temperarily
     private Character character;
     private bool canJump;
     private bool isJumping;
     private float jumpTimer = 0;
-    private float Drag;
-    private float RealWalkSpeed;
+    
     void Start()
     {
         this.character = GetComponent<Character>();
@@ -27,18 +33,24 @@ public class Controller_Player : MonoBehaviour
     }
     void FixedUpdate()
     {
-        character.rb.drag = Drag;
-        if(character.isGrounded())
+        #region Get Player Input
+        float walk = Input.GetAxisRaw("Horizontal");
+        float listening = Input.GetAxisRaw("Vertical");
+        float jump = Input.GetAxisRaw("Jump");
+        #endregion
+        
+        #region Handle Listen Input
+        if(listening>0)
         {
-            Drag = GroundDrag;
-            RealWalkSpeed = WalkSpeed;
-        }else
-        {
-            RealWalkSpeed = WalkSpeed/AirWalk;
-            Drag = AirDrag;
+            this.Listening = true;
         }
-        #region Jump Logic
-        if(Input.GetAxisRaw("Jump")<=0)
+        else{
+            this.Listening = false;
+        }
+        #endregion
+        
+        #region Handle Jump Input
+        if(jump<=0)
         {
             if(character.isGrounded())
             {
@@ -53,7 +65,7 @@ public class Controller_Player : MonoBehaviour
         }
         if(canJump)
         {
-            if(Input.GetAxisRaw("Jump")>0)
+            if(jump>0)
             {       
                 
                 if(jumpContinuously)
@@ -63,8 +75,7 @@ public class Controller_Player : MonoBehaviour
                         character.rb.AddForce(transform.up*JumpPower,ForceMode2D.Impulse);
                         isJumping = true;
                     }
-                    jumpTimer += 1;
-                    Debug.Log("Timer: "+jumpTimer+" Time: "+AirTime);
+                    jumpTimer += 1;                    
                     if(jumpTimer>=AirTime)
                     {
                         canJump = false;                    
@@ -77,8 +88,10 @@ public class Controller_Player : MonoBehaviour
                 character.Jump(FloatPower, jumpContinuously);
             }
         }
+
         #endregion
-        float walk = Input.GetAxisRaw("Horizontal");
+        
+        #region Handle Walk Input
         if(walk>0)
         {
             character.WalkRight(RealWalkSpeed);
@@ -86,5 +99,19 @@ public class Controller_Player : MonoBehaviour
         {
             character.WalkLeft(RealWalkSpeed);
         }
+        #endregion
+
+        #region Set Dynamic RigidBody Settings
+        character.rb.drag = Drag;
+        if(character.isGrounded())
+        {
+            Drag = GroundDrag;
+            RealWalkSpeed = WalkSpeed;
+        }else
+        {
+            RealWalkSpeed = WalkSpeed/AirWalk;
+            Drag = AirDrag;
+        }
+        #endregion
     }
 }
