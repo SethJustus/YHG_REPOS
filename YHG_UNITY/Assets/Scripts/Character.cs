@@ -12,10 +12,6 @@ public class Character : MonoBehaviour
     }
     public bool isGrounded()
     {
-        // if(game.Dialogue_Manager.displaying == true)
-        // {
-        //     return false;
-        // }
         return Physics2D.BoxCast(transform.position,new Vector2(transform.localScale.x,transform.localScale.y),0f, Vector2.down, 0.1f, game.ground);        
     }
     public void Jump(float jumpPower, bool jumpCont)
