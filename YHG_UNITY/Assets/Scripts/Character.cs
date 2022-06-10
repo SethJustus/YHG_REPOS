@@ -16,25 +16,26 @@ public class Character : MonoBehaviour
         // {
         //     return false;
         // }
-        return Physics2D.BoxCast(transform.position,new Vector2(transform.localScale.x,transform.localScale.y),0f, Vector2.down, 0.1f, game.ground);        
+        return Physics2D.BoxCast(transform.position, new Vector2(transform.localScale.x, transform.localScale.y), 0f, Vector2.down, 0.1f, game.ground);
     }
     public void Jump(float jumpPower, bool jumpCont)
     {
-        if(jumpCont)
+        if (jumpCont)
         {
-            rb.AddForce(transform.up*jumpPower, ForceMode2D.Force);
-        }else
+            rb.AddForce(transform.up * jumpPower, ForceMode2D.Force);
+        }
+        else
         {
-            rb.AddForce(transform.up*jumpPower, ForceMode2D.Impulse);
-        }        
+            rb.AddForce(transform.up * jumpPower, ForceMode2D.Impulse);
+        }
     }
     public void WalkLeft(float walkSpeed)
     {
-        rb.AddForce(transform.right*-walkSpeed);
+        rb.AddForce(transform.right * -walkSpeed);
     }
     public void WalkRight(float walkSpeed)
     {
-        rb.AddForce(transform.right*walkSpeed);
+        rb.AddForce(transform.right * walkSpeed);
     }
     public void Talk()
     {
