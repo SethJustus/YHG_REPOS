@@ -4,7 +4,6 @@ ScriptsOnlyBuild:
     - Character
     - Controller_NonPlayer
     - Controller_Player
-    - Dialogue_Manager
     - Game
     Unity.2D.Animation.Editor.dll:
     - UnityEditor.U2D.Animation.BoneGizmo
@@ -109,8 +108,6 @@ ScriptsOnlyBuild:
       Script: {instanceID: 3466}
     - Class: 114
       Script: {instanceID: 3690}
-    - Class: 114
-      Script: {instanceID: 3970}
     - Class: 114
       Script: {instanceID: 4476}
     - Class: 114
@@ -414,7 +411,7 @@ ScriptsOnlyBuild:
     className: TMP_SpriteAnimator
   - hash:
       serializedVersion: 2
-      Hash: a4287047b26a076581c72c9851686147
+      Hash: 871302a5c35f13dcc49bd967ae1cc187
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Game
@@ -594,7 +591,7 @@ ScriptsOnlyBuild:
     className: Physics2DRaycaster
   - hash:
       serializedVersion: 2
-      Hash: bede82c8a10d30ddd3e10ea621f58336
+      Hash: ad9fc106a678de3407d3672958eeb3e9
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Controller_Player
@@ -942,11 +939,11 @@ ScriptsOnlyBuild:
     className: TMP_TextEventCheck
   - hash:
       serializedVersion: 2
-      Hash: 2001e72976c7ea2b9a26dd7e2818e929
+      Hash: 90ddaffae55700178c38a2e6eb79ea7b
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Controller_NonPlayer
   platform: 19
   scenePathNames:
   - Assets/Scenes/PlayerController_Scene.unity
-  playerPath: C:/YHG_Builds/Build_1.1/Yellowhead.exe
+  playerPath: C:/YHG_Builds/Build_1.2/Yellowhead.exe

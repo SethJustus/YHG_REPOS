@@ -31,13 +31,21 @@ public class Controller_Player : MonoBehaviour
         JumpPower = JumpPower*character.rb.mass*character.rb.gravityScale;
         FloatPower = FloatPower*character.rb.mass*character.rb.gravityScale;
     }
-    void FixedUpdate()
+    private float walk;
+    private float listening;
+    private float jump;
+    private void Update()
     {
         #region Get Player Input
-        float walk = Input.GetAxisRaw("Horizontal");
-        float listening = Input.GetAxisRaw("Vertical");
-        float jump = Input.GetAxisRaw("Jump");
+        walk = Input.GetAxisRaw("Horizontal");
+        listening = Input.GetAxisRaw("Vertical");
+        jump = Input.GetAxisRaw("Jump");
         #endregion
+
+    }
+    void FixedUpdate()
+    {
+        
         
         #region Handle Listen Input
         if(listening>0)
