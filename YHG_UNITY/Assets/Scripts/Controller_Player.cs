@@ -13,6 +13,7 @@ public class Controller_Player : MonoBehaviour
     public float AirTime;
     public float WalkSpeed;
     public float AirWalk;
+    public float rollSpeed;
     public bool jumpContinuously;
     //Dialogue Params
     public bool Listening;
@@ -24,6 +25,8 @@ public class Controller_Player : MonoBehaviour
     private bool canJump;
     private bool isJumping;
     private float jumpTimer = 0;
+    private bool facingRight;
+    private bool rolling;
     
     void Start()
     {
@@ -34,14 +37,20 @@ public class Controller_Player : MonoBehaviour
     private float walk;
     private float listening;
     private float jump;
+    private float roll;
     private void Update()
     {
         #region Get Player Input
         walk = Input.GetAxisRaw("Horizontal");
         listening = Input.GetAxisRaw("Vertical");
         jump = Input.GetAxisRaw("Jump");
+        roll = Input.GetAxisRaw("Vertical");
         #endregion
 
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        
     }
     void FixedUpdate()
     {
@@ -102,9 +111,11 @@ public class Controller_Player : MonoBehaviour
         #region Handle Walk Input
         if(walk>0)
         {
+            facingRight = true;
             character.WalkRight(RealWalkSpeed);
         }else if(walk<0)
         {
+            facingRight=false;
             character.WalkLeft(RealWalkSpeed);
         }
         #endregion
@@ -119,6 +130,12 @@ public class Controller_Player : MonoBehaviour
         {
             RealWalkSpeed = WalkSpeed/AirWalk;
             Drag = AirDrag;
+        }
+        #endregion
+        #region Handel Roll Input
+        if(roll<0&&!rolling)
+        {
+            character.Roll(facingRight, rollSpeed, rolling);
         }
         #endregion
     }

@@ -26,7 +26,24 @@ public class Character : MonoBehaviour
             rb.AddForce(transform.up * jumpPower, ForceMode2D.Impulse);
         }
     }
+    public void Roll(bool facingRight, float rollSpeed, bool rolling)
+    {
+        rolling = true;
+        gameObject.transform.localScale = new Vector3(1,1,0);
+        if(facingRight)
+        {
+            rb.AddForce(transform.right*rollSpeed);
+        }
+        else
+        {
+            rb.AddForce(transform.right * -rollSpeed);
+        }
 
+        gameObject.transform.localScale = size;
+        rolling = false;
+        
+        
+    }
     public void WalkLeft(float walkSpeed)
     {
         rb.AddForce(transform.right * -walkSpeed);
@@ -39,10 +56,12 @@ public class Character : MonoBehaviour
 
     private Game game;
     private GameObject gameObj;
+    private Vector3 size;
     void Start()
     {
         gameObj = GameObject.FindGameObjectWithTag("Game_Manager");
         game = gameObj.GetComponent<Game>();
         rb = GetComponent<Rigidbody2D>();
+        size = gameObject.transform.localScale;
     }
 }
